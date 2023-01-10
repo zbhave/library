@@ -2,7 +2,7 @@
 
 //learning git
 import java.util.ArrayList;
-
+import java.util.Scanner;
 
 
 public class Library{
@@ -31,9 +31,9 @@ public class Library{
   public static void main(String[] args){
   
      Library lib = new Library();
+     int option = getMenu();
      
-     while (true) {
-       int option = getMenu();
+     while (option != EXIT_MENU) {
        switch (option) {
            case ISSUE_BOOK:
                issueBook(); 
@@ -50,11 +50,11 @@ public class Library{
                 addBook();
            break;
            default: 
-               System.out.println(String.format("[%d] Thank you for using the Library system. Exiting - good bye", option));
-       }
-       if (option == EXIT_MENU) 
-          break;
-     }
+     
+       } // end switch
+      
+     }// end while
+     System.out.println(String.format("[%d] Thank you for using the Library system. Exiting - good bye", option));
    }
 /*     
      
@@ -75,7 +75,27 @@ public class Library{
   
   
    public static int getMenu(){
-       return 0;
+      Scanner menuInput = new Scanner(System.in);
+      int option = -1;
+      String tmp;
+      while (option == -1) {
+         System.out.println("-----------------Library Menu------------------");
+         System.out.println("| 1. Issue a book                             |"); 
+         System.out.println("| 2. Return a book                            |");
+         System.out.println("| 3. Add a user                               |");
+         System.out.println("| 4. Add a book                               |");
+         System.out.println("| 5. Reports                                  |");
+         System.out.println("|                                             |");
+         System.out.println("| 0. Exit                                     |");
+         System.out.println("-----------------------------------------------");
+         System.out.print("Enter choice[1-5,0] :");
+         option = menuInput.nextInt(); 
+         tmp = menuInput.nextLine();// clear the input buffer
+      } // end while
+      
+      //To do: Handle the case where the user inputs an invalid choice 
+      return option;   
+       
    }
    
    public static void issueBook() {
