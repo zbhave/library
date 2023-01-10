@@ -8,14 +8,19 @@ public class Userlist {
    
        User sunil = new User("Sunil Bhave", 59, 
             "138 Akatarawa road, Upper Hutt");
+            UserList.add(sunil);
        User advait = new User("Advait Zorba Bhave", 19,
             "138 Akatarawa road, Upper Hutt");
+            UserList.add(advait);
        User amy = new User("Amy Lois Pollard", 20,
              "33a Pitt Street, Dunedin");
+             UserList.add(amy);
        User harlan = new User("Harlan Rae", 19,
              "74 Gladstone road, Dunedin");
+             UserList.add(harlan);
        User eva = new User("Eva Levack", 18, 
-            "20 Talavera terrace, Wellington");          
+            "20 Talavera terrace, Wellington");
+            UserList.add(eva);          
       
      
    }  

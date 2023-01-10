@@ -12,9 +12,11 @@ public class Library{
    final static int RETURN_BOOK = 2;
    final static int ADD_USER = 3;
    final static int ADD_BOOK = 4;
+   final static int LIST_BOOKS = 5;
+   final static int LIST_USERS = 6;
    final static int EXIT_MENU = 0;
    
-   BookList catalogue = new BookList();
+   static BookList catalogue = new BookList();
    Userlist users = new Userlist();
 
    public Library() {  
@@ -31,12 +33,12 @@ public class Library{
   public static void main(String[] args){
   
      Library lib = new Library();
-     int option = getMenu();
+     int option = -1;
      
      while (option != EXIT_MENU) {
-       switch (option) {
+       switch (option = getMenu()) {
            case ISSUE_BOOK:
-               issueBook(); 
+                issueBook(); 
            break;
            
            case RETURN_BOOK:
@@ -46,9 +48,20 @@ public class Library{
            case ADD_USER:
                 addUser(); 
            break;
+           
            case ADD_BOOK:
                 addBook();
            break;
+           
+           case LIST_BOOKS:
+                listBooks(catalogue);
+           break;
+           
+           case LIST_USERS:
+                listUsers();
+           break;
+           
+           
            default: 
      
        } // end switch
@@ -84,12 +97,15 @@ public class Library{
          System.out.println("| 2. Return a book                            |");
          System.out.println("| 3. Add a user                               |");
          System.out.println("| 4. Add a book                               |");
-         System.out.println("| 5. Reports                                  |");
+         System.out.println("| 5. List Books                               |");
+         System.out.println("| 6. List Users                               |");
+         System.out.println("| 7. Reports                                  |");
          System.out.println("|                                             |");
          System.out.println("| 0. Exit                                     |");
          System.out.println("-----------------------------------------------");
-         System.out.print("Enter choice[1-5,0] :");
+         System.out.print("Enter choice[1-6,0] :");
          option = menuInput.nextInt(); 
+         System.out.println(String.format("Option %d has been chosen", option));
          tmp = menuInput.nextLine();// clear the input buffer
       } // end while
       
@@ -99,17 +115,54 @@ public class Library{
    }
    
    public static void issueBook() {
+      System.out.println("Option 'Issue a book' has been selected");
+      System.out.println("Not yet implemented");
+
    }
    
    public static void returnBook() {
+      System.out.println("Option 'Return a book' has been selected");
+      System.out.println("Not yet implemented");
    }
    
-   public static void addUser(){
+   public static void addUser() {
+      System.out.println("Option 'Add a user' has been selected");
+      System.out.println("Not yet implemented");
    }
    
    public static void addBook() {
+      System.out.println("Option 'Add a book' has been selected");
+      System.out.println("Not yet implemented");
    }
    
+   public static void listBooks(BookList catalogue) {
+      Scanner menuInput = new Scanner(System.in);
+      
+      String tmp;
+      
+      int i;
+      int size = catalogue.BookList.size();
+   
+      for(i = 0; i < size; i = i+7 ) {
+         int j = 0;
+         //for(j = 0; j < 7; j++) {
+         while(j < 7) {
+             System.out.println(String.format("[%02d]---------------------------", i+j));
+             System.out.println(catalogue.BookList.get( i+j));
+             j = j+1;
+             if(j+1 > size)
+             break;
+         }
+        // }
+         System.out.print(String.format("\n ......Press any key to continue :"));
+         menuInput.nextLine();
+      }
+   
+   }
+   
+   public static void listUsers() {
+   
+   }
    
    public static int getLibraryBook(BookList catalogue, int bookid) {
    
