@@ -45,7 +45,7 @@ public class BookList {
                "Iliad", 700, 22.00, "Epic Poetry, Poetry");
                 BookList.add(homer);
           LibraryBook fitzgerald = new LibraryBook("Fitzgerald", 
-               "The Great Gatsby", 208, 19.99, "Npvel, Fiction, Fantasy");
+               "The Great Gatsby", 208, 19.99, "Novel, Fiction, Fantasy");
                 BookList.add(fitzgerald);
           LibraryBook tolstoy = new LibraryBook("Tolstoy", 
                 "War and Peace", 1225, 34.45, "Novel, Historic Novel, Historical Fiction, Romance");
