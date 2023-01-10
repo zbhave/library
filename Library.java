@@ -139,18 +139,18 @@ public class Library{
       Scanner menuInput = new Scanner(System.in);
       
       String tmp;
-      
+      final int LIST_SIZE = 7;
       int i;
       int size = catalogue.BookList.size();
    
-      for(i = 0; i < size; i = i+7 ) {
+      for(i = 0; i < size; i = i+LIST_SIZE ) {
          int j = 0;
-         //for(j = 0; j < 7; j++) {
-         while(j < 7) {
+         //for(j = 0; j < LIST_SIZE; j++) {
+         while(j < LIST_SIZE) {
              System.out.println(String.format("[%02d]---------------------------", i+j));
              System.out.println(catalogue.BookList.get( i+j));
              j = j+1;
-             if(j+1 > size)
+             if(j+1 > size)  // SRB: Should this be j > size rather than j+1 > size?
              break;
          }
         // }
