@@ -1,5 +1,5 @@
 // learning git
-
+//
 public class User {
 
    private String name = new String("empty");
@@ -24,7 +24,7 @@ public class User {
       name = theName;
       age = theAge;
       address = theAddress;
-   }
+   } 
    
    
    public String getName() {
@@ -56,10 +56,15 @@ public class User {
    public void setAddress(String theAddress) {
       address = theAddress;
    }   
-   
+         
    
     public String toString() {
-      return("Name: " + name + "\nAge: " + age + "\nAddress: " + address);
+      return("Name: " + name + "\nAge: " + age + "\nAddress: " + address + "\nUserID" + userId);
    }
  
+ 
+    public int getUserId() {
+      return userId;
+   }
+
 }
