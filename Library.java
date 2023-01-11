@@ -54,7 +54,7 @@ public class Library{
            break;
            
            case LIST_BOOKS:
-                listBooks(catalogue);
+                listBooksAndGetBookId(catalogue);
            break;
            
            case LIST_USERS:
@@ -135,8 +135,9 @@ public class Library{
       System.out.println("Not yet implemented");
    }
    
-   public static void listBooks(BookList catalogue) {
+   public static int listBooksAndGetBookId(BookList catalogue) {
       Scanner menuInput = new Scanner(System.in);
+      int bookId = 0; //means bookId is not defined
       
       String tmp;
       final int LIST_SIZE = 7;
@@ -148,15 +149,30 @@ public class Library{
          //for(j = 0; j < LIST_SIZE; j++) {
          while(j < LIST_SIZE) {
              System.out.println(String.format("[%02d]---------------------------", i+j));
-             System.out.println(catalogue.BookList.get( i+j));
+             try {
+                System.out.println(catalogue.BookList.get( i+j));
+             }catch (ArrayIndexOutOfBoundsException  e) {
+                System.out.println(String.format( "Error: The ArrayList index was exceeded! i=%d, j =%d", i, j));
+             }  
              j = j+1;
-             if(j+1 > size)  // SRB: Should this be j > size rather than j+1 > size?
-             break;
+             if(j+i >= size)  // SRB: Should this be j > size rather than j+1 > size?
+              break;
          }
         // }
          System.out.print(String.format("\n ......Press any key to continue :"));
-         menuInput.nextLine();
-      }
+         tmp = menuInput.nextLine();
+         Scanner f1 = new Scanner(tmp);
+         if (f1.hasNextInt()) {
+             if(catalogue.validBookId(bookId = f1.nextInt())) 
+                break;
+             else {
+                System.out.println(String.format("Error: [%d] is not a valid BookId", bookId));
+                bookId = 0; //Reset bookId to not defined
+             }
+         }
+         
+      } //end for loop - i
+      return bookId;
    
    }
    

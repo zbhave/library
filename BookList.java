@@ -51,9 +51,17 @@ public class BookList {
                 "War and Peace", 1225, 34.45, "Novel, Historic Novel, Historical Fiction, Romance");
                 BookList.add(tolstoy);
       }                                                                    
-      
+   }   
             
-           
+   public boolean validBookId(int bookId) {
+       int i;
+       LibraryBook book;
+       for(i = 0; i < BookList.size(); i++) { 
+           book = BookList.get(i);
+           if (book.getBookUid() == bookId) 
+               return true;
+       }
+       return false;        
    }
    
   
