@@ -23,6 +23,21 @@ public class Userlist {
             UserList.add(eva);          
       
      
-   }  
+   } 
+   
+   
+   public boolean validUsersId(int UsersId) {
+      
+      int i;
+      UserList user;
+      
+      for(i = 0; i < UserList.size(); i++) {
+         user = UserList.get(i);
+         if(user.getUserId() == UsersId);
+            return true;
+      }
+      return false;
+      
+   } 
   
 }     

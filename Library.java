@@ -17,7 +17,7 @@ public class Library{
    final static int EXIT_MENU = 0;
    
    static BookList catalogue = new BookList();
-   Userlist users = new Userlist();
+   static Userlist users = new Userlist();
 
    public Library() {  
   
@@ -38,7 +38,7 @@ public class Library{
      while (option != EXIT_MENU) {
        switch (option = getMenu()) {
            case ISSUE_BOOK:
-                issueBook(); 
+                issueBook(users); 
            break;
            
            case RETURN_BOOK:
@@ -114,10 +114,37 @@ public class Library{
        
    }
    
-   public static void issueBook() {
-      System.out.println("Option 'Issue a book' has been selected");
-      System.out.println("Not yet implemented");
-
+   public static void issueBook(Userlist users) {
+     Scanner input = new Scanner(System.in);
+     int usersId = 0;
+     
+     String usl;
+     final int USER_SIZE = 5;
+     int i;
+     int length = users.UserList.size();
+     
+     for(i = 0; i < USER_SIZE; i = i++) {
+         int j = 0;
+         while(j < USER_SIZE) {
+            System.out.println(String.format("[%02d]------------------------", i+j));
+            System.out.println(users.UserList.get(i+j));
+           j = j+1;
+           if(j >=length)
+             break;
+         }
+         
+         System.out.print(String.format("\n ......Press enter to continue :"));
+         usl = input.nextLine();
+         Scanner readr = new Scanner(usl);
+         if(readr.hasNextInt()) {
+           if(users.validUsersId(usersId = readr.nextInt()))
+              break;
+           else {
+               System.out.println(String.format("Error: [%d] is not a valid User ID", usersId));
+               usersId = 0; 
+           }   
+         }       
+     }
    }
    
    public static void returnBook() {
