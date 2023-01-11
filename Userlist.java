@@ -29,7 +29,7 @@ public class Userlist {
    public boolean validUsersId(int UsersId) {
       
       int i;
-      UserList user;
+      User user;
       
       for(i = 0; i < UserList.size(); i++) {
          user = UserList.get(i);
