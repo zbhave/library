@@ -34,7 +34,9 @@ public class LibraryBook extends Book{
 
     }
     
-    
-    
-    
+    public String toString() {
+    //return (Book.toString()+"\nStatus : "+ toString(this.bookStatus);
+        return (super.toString()+ "\nStatus : " +  bookStatus + "\nUserId : "+ uid  );
+    }
+       
 }

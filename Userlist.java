@@ -33,7 +33,7 @@ public class Userlist {
       
       for(i = 0; i < UserList.size(); i++) {
          user = UserList.get(i);
-         if(user.getUserId() == UsersId);
+         if(user.getUserId() == UsersId)
             return true;
       }
       return false;

@@ -16,6 +16,9 @@ public class Library{
    final static int LIST_USERS = 6;
    final static int EXIT_MENU = 0;
    
+   final static int  ALL_BOOKS = 1;
+   final static int  AVAIL_BOOKS = 2;
+   
    static BookList catalogue = new BookList();
    static Userlist users = new Userlist();
 
@@ -54,11 +57,14 @@ public class Library{
            break;
            
            case LIST_BOOKS:
-                listBooksAndGetBookId(catalogue);
+               // listBooksAndGetBookId(catalogue);
+                listBooksAndGetBookId(ALL_BOOKS);
+
            break;
            
            case LIST_USERS:
-                listUsers(users);
+                //listUsers(users);
+                listUsers();
            break;
            
            
@@ -115,8 +121,29 @@ public class Library{
    }
    
    public static void issueBook() {
-   
+       int idBook;
+       int idUser;
+       int i = 0;
+       LibraryBook libBook;
+       int size = catalogue.BookList.size();
+       
+       idUser = listUsers();
+       idBook = listBooksAndGetBookId(AVAIL_BOOKS);
+     
+       while(i < size) {
+          libBook = catalogue.BookList.get(i);
+          if(libBook.getBookUid() == idBook) {
+             libBook.setBookStatus(LibraryBook.Status.ISSUED, idUser);
+             System.out.println(String.format("Book [%d] issued to User [%d]", idBook, idUser));
+             break; 
+          }
+          i++;
+       }
+       
+       
    }
+     
+   
    
    public static void returnBook() {
       System.out.println("Option 'Return a book' has been selected");
@@ -133,7 +160,9 @@ public class Library{
       System.out.println("Not yet implemented");
    }
    
-   public static int listBooksAndGetBookId(BookList catalogue) {
+   // public static int listBooksAndGetBookId(BookList catalogue) {
+    public static int listBooksAndGetBookId(int list_type) {
+
       Scanner menuInput = new Scanner(System.in);
       int bookId = 0; //means bookId is not defined
       
@@ -147,6 +176,7 @@ public class Library{
          //for(j = 0; j < LIST_SIZE; j++) {
          while(j < LIST_SIZE) {
              System.out.println(String.format("[%02d]---------------------------", i+j));
+             if(list_type == ALL_BOOKS) {
              try {
                 System.out.println(catalogue.BookList.get( i+j));
              }catch (ArrayIndexOutOfBoundsException  e) {
@@ -155,6 +185,7 @@ public class Library{
              j = j+1;
              if(j+i >= size)  // SRB: Should this be j > size rather than j+1 > size?
               break;
+            }
          }
         // }
          System.out.print(String.format("\n ......Press any key to continue :"));
@@ -174,7 +205,9 @@ public class Library{
    
    }
    
-   public static void listUsers(Userlist users) {
+   //public static void listUsers(Userlist users) {
+   public static int listUsers() {
+
    
      Scanner input = new Scanner(System.in);
      int usersId = 0;
@@ -206,7 +239,9 @@ public class Library{
            }   
          }       
      }
-   }
+     
+     return usersId;
+  }
    
    public static int getLibraryBook(BookList catalogue, int bookid) {
    
