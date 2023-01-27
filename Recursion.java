@@ -47,6 +47,18 @@ public class Recursion{
     
     public static double arrAvg(int arr1[]) { 
     
+      int length = arr1.length;
+      int sum = 0;
+      double average;
+      int i;
+      
+      for(i = 0; i < length; i++) {
+         sum = sum + arr1[i];
+      }
+      
+      average = sum/length;
+      
+      return average;
     
     }  
     
