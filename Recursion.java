@@ -43,6 +43,11 @@ public class Recursion{
             }
             System.out.println();
          }
-    }    
+    } 
+    
+    public static double arrAvg(int arr1[]) { 
+    
+    
+    }  
     
 }
